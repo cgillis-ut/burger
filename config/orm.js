@@ -12,8 +12,8 @@ var orm = {
     });
 	},
 	insertOne: function(table, burgerChoice, cb){
-		var queryString = "INSERT into ?? (burger_name) VALUES ?? ;"; 
-		connection.query(queryString, [table, burgerChoice], function(err, data) {
+		var queryString = "INSERT into " + table + " (burger_name) VALUES ?? ;"; 
+		connection.query(queryString, [burgerChoice], function(err, data) {
       if (err) {
         throw err;
       }
@@ -21,11 +21,10 @@ var orm = {
     });
 
 	},
-	updateOne: function(table, devoured, cb){
-		UPDATE burgers SET devoured = true WHERE id = 3; 
-		var queryString = "UPDATE " + table + " SET (devoured) = true WHERE id = ?" + 
+	updateOne: function(table, whichBurger, cb){
+		var queryString = "UPDATE " + table + " SET (devoured) = true WHERE id = ? ;";  
 	}
-}
+};
 
 
 module.exports = orm;
