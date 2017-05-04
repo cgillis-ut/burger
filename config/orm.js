@@ -11,8 +11,8 @@ var orm = {
       cb(data);
     });
 	},
-	insertOne: function(table, burgerChoice, cb){
-		var queryString = "INSERT into " + table + " (burger_name) VALUES ?? ;"; 
+	insertOne: function(table, col, burgerChoice, cb){
+		var queryString = "INSERT into " + table + " (" + col + ") VALUES ? ;"; 
 		connection.query(queryString, [burgerChoice], function(err, data) {
       if (err) {
         throw err;
@@ -21,8 +21,8 @@ var orm = {
     });
 
 	},
-	updateOne: function(table, whichBurger, cb){
-		var queryString = "UPDATE " + table + " SET (devoured) = true WHERE id = ? ;"; 
+	updateOne: function(table, col, whichBurger, cb){
+		var queryString = "UPDATE " + table + " SET ( " + col.toString() + ") = true WHERE id = ? ;"; 
 		connection.query(queryString, [whichBurger], function(err, data) {
       if (err) {
         throw err;
