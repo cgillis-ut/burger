@@ -3,18 +3,23 @@ var connection = require("../config/connection.js");
 
 var orm = {
 	selectAll: function(table, cb){
-		var queryString = "SELECT * FROM " + table + ";";
-    connection.query(queryString, function(err, data) {
+		var queryString = "SELECT * FROM ?? ;";
+    connection.query(queryString, [table], function(err, data) {
       if (err) {
         throw err;
       }
       cb(data);
     });
 	},
-	insertOne: function(table, ){
-		var queryString = "INSERT into " + table +
-		"(burger_name, devoured, date_) VALUES (?? ?? ??);"; 
-		" "
+	insertOne: function(table, cb){
+		//is this possible?
+		var queryString = "INSERT into ?? (?? , ?? , ??) VALUES (?? ?? ??);"; 
+		connection.query(queryString, [table,], function(err, data) {
+      if (err) {
+        throw err;
+      }
+      cb(data);
+    });
 
 	},
 	updateOne: function(){}
