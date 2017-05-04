@@ -3,8 +3,8 @@ var connection = require("../config/connection.js");
 
 var orm = {
 	selectAll: function(table, cb){
-		var queryString = "SELECT * FROM ?? ;";
-    connection.query(queryString, [table], function(err, data) {
+		var queryString = "SELECT * FROM " + table + " ;";
+    connection.query(queryString, function(err, data) {
       if (err) {
         throw err;
       }
@@ -22,7 +22,13 @@ var orm = {
 
 	},
 	updateOne: function(table, whichBurger, cb){
-		var queryString = "UPDATE " + table + " SET (devoured) = true WHERE id = ? ;";  
+		var queryString = "UPDATE " + table + " SET (devoured) = true WHERE id = ? ;"; 
+		connection.query(queryString, [whichBurger], function(err, data) {
+      if (err) {
+        throw err;
+      }
+      cb(data);
+    }); 
 	}
 };
 
