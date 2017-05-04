@@ -11,10 +11,9 @@ var orm = {
       cb(data);
     });
 	},
-	insertOne: function(table, cb){
-		//is this possible?
-		var queryString = "INSERT into ?? (?? , ?? , ??) VALUES (?? ?? ??);"; 
-		connection.query(queryString, [table,], function(err, data) {
+	insertOne: function(table, burgerChoice, cb){
+		var queryString = "INSERT into ?? (burger_name) VALUES ?? ;"; 
+		connection.query(queryString, [table, burgerChoice], function(err, data) {
       if (err) {
         throw err;
       }
@@ -22,7 +21,10 @@ var orm = {
     });
 
 	},
-	updateOne: function(){}
+	updateOne: function(table, devoured, cb){
+		UPDATE burgers SET devoured = true WHERE id = 3; 
+		var queryString = "UPDATE " + table + " SET (devoured) = true WHERE id = ?" + 
+	}
 }
 
 
