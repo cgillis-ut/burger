@@ -12,9 +12,11 @@ var orm = {
     });
 	},
 	insertOne: function(table, col, burgerChoice, cb){
-		var queryString = "INSERT into " + table + " (" + col + ") VALUES ? ;"; 
-		connection.query(queryString, [burgerChoice], function(err, data) {
-      if (err) {
+		var queryString = "INSERT into " + table + " (" + col.toString() + ") VALUES (' ?? ');";
+                       // INSERT into burgers       (burger_name) VALUES ("cheese");
+
+
+		connection.query(queryString, [burgerChoice], function(err, data) {      if (err) {
         throw err;
       }
       cb(data);
