@@ -18,16 +18,14 @@ router.post("/", function(req, res) {
 	});
 });
 
+router.put("/:id", function(req, res) {
+  var condition = parseInt(req.params.id);
 
-// router.put("/:id", function(req, res) {
-//   var condition = "id = " + req.params.id;
-
-//   burger.updateOne({
-//     devoured: req.body.devoured
-//   }, condition, function() {
-//     res.redirect("/");
-//   });
-// });
+  burger.updateOne(["devoured"], condition, function() {
+    res.redirect("/");
+    console.log("updated");
+  });
+});
 
 
 
